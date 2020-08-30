@@ -16,8 +16,9 @@ for j in range(3):
     for i in range(7):
         # generate messages
         messages = patterns.descending(5+i,80 - 4*i,4)
+        messages += patterns.ascending(3, 40-4*i, 4)
 
         # send messages to output
         for msg in messages:
             outport.send(msg)
-            time.sleep(.2)
+            time.sleep(.15)
