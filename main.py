@@ -12,11 +12,12 @@ import patterns
 port = "minilogue SOUND"
 outport = mido.open_output(port)
 
-for i in range(5):
-    # generate messages
-    messages = patterns.descending(10,80,4)
+for j in range(3):
+    for i in range(7):
+        # generate messages
+        messages = patterns.descending(5+i,80 - 4*i,4)
 
-    # send messages to output
-    for msg in messages:
-        outport.send(msg)
-        time.sleep(.2)
+        # send messages to output
+        for msg in messages:
+            outport.send(msg)
+            time.sleep(.2)
