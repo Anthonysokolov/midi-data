@@ -17,8 +17,8 @@ for j in range(2):
         # generate messages
         #messages = patterns.descending(5+i,127 - 4*i,4)
         #messages += patterns.ascending(3, 99-4*i, 4)
-        messages = patterns.descending(start = 80, step=4)
-        messages = patterns.randWalk(12,vel=3)
+        messages = patterns.descending(start = 90, step=4)
+        messages = patterns.randWalk(12,start = 72, vel=5)
 
         # send messages to output
         for msg in messages:
