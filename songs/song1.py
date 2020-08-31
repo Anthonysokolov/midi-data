@@ -25,4 +25,4 @@ while True:
     # send messages to output
     for msg in messages:
         outport.send(msg)
-        time.sleep(.2)
+        time.sleep(.15)
