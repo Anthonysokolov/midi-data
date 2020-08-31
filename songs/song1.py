@@ -6,10 +6,11 @@ Made to use with hardware synths!
 import mido
 import time
 import sys
+from random import randint
 
 sys.path.append("..")
 
-import patterns
+import patterns as p
 
 # Connect port, change port name as needed
 port = "minilogue SOUND"
@@ -17,12 +18,19 @@ outport = mido.open_output(port)
 
 while True:
     # generate messages
-    #messages = patterns.descending(5+i,127 - 4*i,4)
-    #messages += patterns.ascending(3, 99-4*i, 4)
-    messages = patterns.descending(start = 90, step=4)
-    messages = patterns.randWalk(12,start = 72, vel=5)
+    messages = p.ascending(5, start=67,step=3)
+    messages.append(None)
+    messages += p.ascending(5, start = 64, step=3)
+    messages.append(None)
+    messages += p.randWalk(7, start=71, vel=3)
 
     # send messages to output
     for msg in messages:
-        outport.send(msg)
-        time.sleep(.15)
+        if msg:
+            outport.send(msg)
+            amt = 0.05 * randint(4,8)
+            time.sleep(amt)
+        else:
+            time.sleep(0.3)
+
+    time.sleep(0.5)
